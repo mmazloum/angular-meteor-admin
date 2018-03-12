@@ -1,0 +1,25 @@
+@import "../../../styles/_var";
+
+mat-toolbar.mat-toolbar.sidenav-toolbar {
+  background: $sidenav-toolbar-background;
+  padding: 0 14px 0 24px;
+  z-index: 3;
+}
+
+.sidenav-container, .sidenav-scrollbar-container {
+  height: 100%;
+}
+
+.cdk-focus-trap-content, mat-sidenav {
+  overflow-y: hidden !important;
+  overflow-x: hidden;
+}
+
+.icon-sidenav-toggle {
+  color: $sidenav-color;
+  transition: transform .25s;
+
+  &.rotate {
+    transform: rotate(-180deg);
+  }
+}

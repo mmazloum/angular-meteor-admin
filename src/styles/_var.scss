@@ -1,0 +1,81 @@
+/**
+  General
+ */
+$color: rgba(black, 0.87);
+$secondary-color: rgba(black, 0.54);
+$spacing: 24px;
+$divider-color: rgba(black, 0.12);
+
+/**
+  Toolbar
+ */
+$toolbar-height: 64px;
+$toolbar-z-index: 500;
+
+/**
+  Notifications
+ */
+$color__primary: #4CAF50;
+$color__accent: #E91E63;
+$color__warn: #f44336;
+
+$color__primary-contrast: #FFF;
+$color__accent-contrast: #FFF;
+$color__warn-contrast: #FFF;
+
+/**
+  Footer
+ */
+$footer-height: 56px;
+
+/**
+  Sidenav
+ */
+
+$sidenav-color: #A7A9AE;
+$sidenav-toolbar-background: #272B35;
+
+$sidenav-background: #2B303B;
+$sidenav-background-hover: darken($sidenav-background, 2);
+$sidenav-background-active: $sidenav-background-hover;
+
+$sidenav-background-level1: darken($sidenav-background, 2.5);
+$sidenav-background-level1-hover: darken($sidenav-background-level1, 1.5);
+$sidenav-background-level1-active: $sidenav-background-level1-hover;
+
+$sidenav-background-level2: darken($sidenav-background-level1, 2.5);
+$sidenav-background-level2-hover: darken($sidenav-background-level2, 1.5);
+$sidenav-background-level2-active: $sidenav-background-level2-hover;
+
+$sidenav-background-level3: darken($sidenav-background-level2, 2.5);
+$sidenav-background-level3-hover: darken($sidenav-background-level3, 1.5);
+$sidenav-background-level3-active: $sidenav-background-level3-hover;
+
+$sidenav-background-level4: darken($sidenav-background-level3, 2.5);
+$sidenav-background-level4-hover: darken($sidenav-background-level4, 1.5);
+$sidenav-background-level4-active: $sidenav-background-level4-hover;
+
+$sidenav-background-level5: darken($sidenav-background-level4, 2.5);
+$sidenav-background-level5-hover: darken($sidenav-background-level5, 1.5);
+$sidenav-background-level5-active: $sidenav-background-level5-hover;
+
+$sidenav-background-level6: darken($sidenav-background-level5, 2.5);
+$sidenav-background-level6-hover: darken($sidenav-background-level6, 1.5);
+$sidenav-background-level6-active: $sidenav-background-level6-hover;
+
+$sidenav-item-padding: 24px;
+$sidenav-item-padding-level2: 10px;
+$sidenav-item-padding-level3: 20px;
+$sidenav-item-padding-level4: 30px;
+$sidenav-item-padding-level5: 40px;
+$sidenav-item-padding-level6: 40px;
+
+$sidenav-width: 250px;
+
+$sidenav-item-name-margin-left: $sidenav-item-padding;
+$sidenav-icon-width-height: 18px;
+
+$icon-sidenav-max-width: ($sidenav-item-padding * 2) + $sidenav-icon-width-height + 2;
+
+$sidenav-z-index: 4;
+$sidenav-content-z-index: 5;

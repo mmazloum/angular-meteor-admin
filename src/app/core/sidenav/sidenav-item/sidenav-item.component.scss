@@ -1,0 +1,207 @@
+@import "../../../../styles/_var";
+
+:host {
+  display: block;
+}
+
+mat-nav-list a.sidenav-anchor {
+
+  &.mat-list-item .mat-list-item-content {
+    padding-left: $sidenav-item-padding;
+    padding-right: $sidenav-item-padding;
+  }
+
+  .sidenav-item-name {
+    margin-left: $sidenav-item-name-margin-left;
+    font-size: 14px;
+  }
+
+  mat-icon {
+    width: $sidenav-icon-width-height;
+    height: $sidenav-icon-width-height;
+    font-size: 18px;
+    line-height: 18px;
+  }
+}
+
+.sidenav-list {
+  transition: height .4s cubic-bezier(.35, 0, .25, 1);
+
+  > vr-sidenav-item {
+    &.open {
+
+      > .sidenav-anchor {
+        .sidenav-item-dropdown-indicator {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .sidenav-item-dropdown-indicator {
+      transition: transform .25s;
+    }
+
+    .badge {
+      padding: 4px 8px;
+      font-size: 12px;
+      background: #2196F3;
+      border-radius: 5px;
+      color: #FFF;
+    }
+  }
+}
+
+.sidenav-toplevel {
+
+  // Every sidenav-anchor in this sidenav
+  .sidenav-anchor {
+    position: relative;
+    cursor: pointer;
+    color: $sidenav-color;
+    transition: color .1s;
+    outline: none;
+
+    &:hover {
+      color: #FFFFFF;
+    }
+
+    &.active {
+      color: #FFFFFF;
+    }
+  }
+
+  > .sidenav-item { // Top Level Item
+
+    > .sidenav-anchor {
+      &:hover {
+        background: $sidenav-background-hover;
+      }
+
+      &.active {
+        background: $sidenav-background-active;
+      }
+    }
+
+    > .sidenav-list-nested > .sidenav-item { // Level 1 aka 1st Dropdown
+      background: $sidenav-background-level1;
+
+      > .sidenav-anchor {
+        &:hover {
+          background: $sidenav-background-level1-hover;
+        }
+
+        &.active {
+          background: $sidenav-background-level1-active;
+        }
+      }
+
+      > .sidenav-list-nested > .sidenav-item { // Level 2
+        background: $sidenav-background-level2;
+
+        > .sidenav-anchor {
+          padding-left: $sidenav-item-padding-level2;
+
+          &:hover {
+            background: $sidenav-background-level2-hover;
+          }
+
+          &.active {
+            background: $sidenav-background-level2-active;
+          }
+        }
+
+        > .sidenav-list-nested > .sidenav-item { // Level 3
+          background: $sidenav-background-level3;
+
+          > .sidenav-anchor {
+            padding-left: $sidenav-item-padding-level3;
+
+            &:hover {
+              background: $sidenav-background-level3-hover;
+            }
+
+            &.active {
+              background: $sidenav-background-level3-active;
+            }
+          }
+
+          > .sidenav-list-nested > .sidenav-item { // Level 4
+            background: $sidenav-background-level4;
+
+            > .sidenav-anchor {
+              padding-left: $sidenav-item-padding-level4;
+
+              &:hover {
+                background: $sidenav-background-level4-hover;
+              }
+
+              &.active {
+                background: $sidenav-background-level4-active;
+              }
+            }
+
+            > .sidenav-list-nested > .sidenav-item { // Level 5
+              background: $sidenav-background-level5;
+
+              > .sidenav-anchor {
+                padding-left: $sidenav-item-padding-level5;
+
+                &:hover {
+                  background: $sidenav-background-level5-hover;
+                }
+
+                &.active {
+                  background: $sidenav-background-level5-active;
+                }
+              }
+
+              .sidenav-list-nested > .sidenav-item { // Infinite Levels after
+                > .sidenav-anchor {
+                  padding-left: $sidenav-item-padding-level6;
+
+                  &:hover {
+                    background: $sidenav-background-level6-hover;
+                  }
+
+                  &.active {
+                    background: $sidenav-background-level6-active;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sidenav-item .sidenav-list-nested {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+
+    &:before, &:after {
+      content: " ";
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      z-index: 3;
+    }
+
+    &:before {
+      background: linear-gradient(180deg, rgba(0,0,0,.3) 0, transparent);
+      top: 0;
+    }
+
+    &:after {
+      background: linear-gradient(-180deg, rgba(0,0,0,.3) 0, transparent);
+      bottom: 0;
+    }
+  }
+}
+
+
+
+
+

@@ -1,0 +1,128 @@
+<div class="header"></div>
+<div class="chat-container">
+  <div class="chat mat-elevation-z4">
+    <mat-sidenav-container class="chat-sidenav-container">
+
+      <mat-sidenav class="chat-sidenav mat-elevation-z2" mode="side" [opened]="true" #chatSidenav>
+        <div class="sidenav-container">
+          <mat-toolbar>
+            <div class="toolbar" fxLayout="row" fxLayoutAlign="start center">
+              <img class="avatar pointer" src="assets/img/avatars/noavatar.png">
+              <span fxFlex><!-- fill space --></span>
+              <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </div>
+          </mat-toolbar>
+
+          <div class="chat-contacts-container" fxLayout="column">
+            <vr-scrollbar>
+              <mat-nav-list class="chat-contacts">
+                <mat-list-item class="chat-contact" (click)="setActiveChat(chat)" *ngFor="let chat of chats" matRipple>
+                  <img [src]="chat.picture" mat-list-avatar>
+                  <h3 class="name" matLine>{{chat.name}}</h3>
+                  <p class="last-message" matLine> {{chat.lastMessage}}</p>
+                </mat-list-item>
+              </mat-nav-list>
+            </vr-scrollbar>
+          </div>
+        </div>
+      </mat-sidenav>
+
+      <div class="chat-inner-container">
+        <mat-toolbar>
+          <div class="toolbar" fxLayout="row">
+
+            <div class="current-contact" fxLayout="row" fxLayoutAlign="start center">
+              <img class="avatar pointer" [src]="activeChat.picture">
+
+              <div fxLayout="column">
+                <span class="name">{{ activeChat.name }}</span>
+                <span class="status">Online</span>
+              </div>
+            </div>
+
+            <span fxFlex><!-- fill space --></span>
+
+            <button mat-icon-button>
+              <mat-icon>attach_file</mat-icon>
+            </button>
+
+            <button mat-icon-button [matMenuTriggerFor]="chatMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+        </mat-toolbar>
+
+        <div class="chat-content" fxLayout="column" fxLayoutAlign="end stretch">
+
+          <vr-scrollbar #chatScroll>
+            <div class="messages-container">
+              <div class="chat-message" *ngFor="let message of chats[0].messages" [ngSwitch]="message.who"
+                   fxLayout="column" fxLayoutAlign="end start">
+                <div class="partner" *ngSwitchCase="'partner'" fxFlexAlign="start" fxLayout="row"
+                     fxLayoutAlign="start start">
+                  <img class="avatar" [src]="activeChat.picture">
+                  <span class="message mat-elevation-z1">{{ message.message }}</span>
+                </div>
+                <div class="me" *ngSwitchCase="'me'" fxFlexAlign="end" fxLayout="row" fxLayoutAlign="end start">
+                  <span class="message mat-elevation-z1">{{ message.message }}</span>
+                  <img class="avatar" src="assets/img/avatars/noavatar.png">
+                </div>
+              </div>
+            </div>
+          </vr-scrollbar>
+
+
+          <div class="chat-respond" fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex>
+              <textarea matInput (keyup.enter)="send()" [(ngModel)]="newMessage"
+                        placeholder="Type and hit enter to send your message"></textarea>
+            </mat-form-field>
+            <button (click)="send()" mat-fab color="primary">
+              <mat-icon>send</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </mat-sidenav-container>
+
+  </div>
+</div>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon> account_circle</mat-icon>
+    <span> Profile </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon> settings</mat-icon>
+    <span> Settings </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>help</mat-icon>
+    <span>Help</span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>
+    <mat-icon> exit_to_app</mat-icon>
+    <span> Logout </span>
+  </button>
+</mat-menu>
+
+<mat-menu #chatMenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon> account_circle</mat-icon>
+    <span> Contact Info </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon> volume_mute</mat-icon>
+    <span> Mute Chat </span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="clearMessages(activeChat)">
+    <mat-icon> clear_all</mat-icon>
+    <span> Clear Messages </span>
+  </button>
+</mat-menu>

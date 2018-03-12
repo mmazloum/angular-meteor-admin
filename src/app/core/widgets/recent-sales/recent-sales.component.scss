@@ -1,0 +1,22 @@
+.recent-sales {
+  background: white;
+
+  table {
+    font-size: 14px;
+
+    thead {
+      th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+    }
+
+    tbody {
+      color: #555;
+    }
+  }
+
+  .chart-container {
+    margin-top: 24px;
+  }
+}

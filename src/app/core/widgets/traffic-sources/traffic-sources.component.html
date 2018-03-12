@@ -1,0 +1,39 @@
+<div class="traffic-sources-card chart-widget mat-elevation-z2">
+  <div class="title-container" [style.color]="textColor" fxLayout="row" fxLayoutAlign="start center">
+    <div fxLayout="column">
+      <span class="title">{{ title }}</span>
+      <span class="extra">{{ subTitle }}</span>
+    </div>
+    <span fxFlex></span>
+    <button mat-icon-button (click)="reload()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="options">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+
+  <div class="content" fxLayout="column" fxLayoutGap="16px">
+    <div class="section" fxLayout="row" fxLayoutAlign="start center" *ngFor="let data of chartData">
+      <div class="source" fxFlex [style.background-color]="data[0].color">{{ data[0].key }}</div>
+      <span class="value" fxFlex>{{ data[0].sum | number: '1.0-0' }}</span>
+      <nvd3 fxFlex [options]="chartOptions" [data]="data"></nvd3>
+    </div>
+  </div>
+  <vr-loading-overlay [isLoading]="isLoading"></vr-loading-overlay>
+</div>
+
+<mat-menu #options="matMenu">
+  <button mat-menu-item>
+    <mat-icon> settings </mat-icon>
+    <span> Settings </span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon> more </mat-icon>
+    <span> More Info </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon> remove_circle </mat-icon>
+    <span> Remove Widget </span>
+  </button>
+</mat-menu>

@@ -1,0 +1,26 @@
+<div class="event-edit">
+  <div matDialogTitle>
+    Edit Event
+  </div>
+  <div class="content" mat-dialog-content>
+    <p fxLayout="row">
+      <mat-form-field fxFlex>
+        <input matInput placeholder="Event Name" [(ngModel)]="event.title">
+      </mat-form-field>
+    </p>
+    <p fxLayout="row">
+      <mat-form-field fxFlex>
+        <input matInput placeholder="Event Start Time" [(ngModel)]="eventStart">
+      </mat-form-field>
+    </p>
+    <p fxLayout="row">
+      <mat-form-field fxFlex>
+        <input matInput placeholder="Event End Time" [(ngModel)]="eventEnd">
+      </mat-form-field>
+    </p>
+  </div>
+  <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button matDialogClose mat-button>Cancel</button>
+    <button class="save" mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+</div>

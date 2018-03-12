@@ -1,0 +1,38 @@
+<div fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="center center" style="margin: 24px 0;">
+    <mat-card fxFlex>
+      <mat-card-title>Material Icons</mat-card-title>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-content fxLayout="column">
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+          <div fxFlex.gt-md>
+            <div fxLayout="column">
+              <p>Icons are a neat way to add some image to only-text lists. Our theme comes with a great variety of icons from the official Material Icons font.</p>
+              <div class="extra">Example:</div>
+              <code vrHighlight class="html">&lt;mat-icon&gt;grade&lt;/mat-icon&gt;</code>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider reverse"></div>
+
+        <div class="title">List of all Material Icons</div>
+        <div class="header">
+          <mat-form-field fxFlex floatPlaceholder="never">
+            <input matInput #filter placeholder="Filter Icons">
+          </mat-form-field>
+        </div>
+        <div class="icon-list">
+          <div class="icon" *ngFor="let icon of icons">
+            <mat-icon>{{ icon }}</mat-icon>
+            <div class="icon-name">{{ icon }}</div>
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

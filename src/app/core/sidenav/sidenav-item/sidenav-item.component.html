@@ -1,0 +1,46 @@
+<div *ngIf="item.isRouteString(); then routeNavItem else functionNavItem"></div>
+
+<ng-template #functionNavItem>
+  <a class="sidenav-anchor" [ngClass]="item.customClass"
+     *ngIf="!item.hasSubItems()"
+     mat-list-item matRipple (click)="item.route()">
+
+    <mat-icon>{{ item.icon }}</mat-icon>
+    <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
+    <span fxFlex><!-- fill space --></span>
+    <span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" [style.background-color]="item.badgeColor">{{ item.badge }}</span>
+  </a>
+</ng-template>
+
+
+<ng-template #routeNavItem>
+  <a class="sidenav-anchor" [ngClass]="item.customClass"
+     *ngIf="!item.hasSubItems()"
+     mat-list-item matRipple
+     [routerLink]="[item.route]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+
+    <mat-icon>{{ item.icon }}</mat-icon>
+    <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
+    <span fxFlex><!-- fill space --></span>
+    <span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" [style.background-color]="item.badgeColor">{{ item.badge }}</span>
+  </a>
+</ng-template>
+
+<a class="sidenav-anchor"
+   *ngIf="item.hasSubItems()"
+   mat-list-item matRipple
+   (click)="toggleDropdown()"
+   [ngClass]="item.customClass">
+
+  <mat-icon>{{ item.icon }}</mat-icon>
+  <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
+  <span fxFlex><!-- fill space --></span>
+  <span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" [style.background-color]="item.badgeColor" style="margin-right: 12px;">{{ item.badge }}</span>
+  <mat-icon *ngIf="item.hasSubItems()" class="sidenav-item-dropdown-indicator rotate fade-in-on-icon-sidenav">expand_more</mat-icon>
+
+</a>
+
+<mat-nav-list class="sidenav-list sidenav-list-nested"
+     fxLayout="column" [style.height]="getSubItemsHeight()">
+  <vr-sidenav-item *ngFor="let subItem of item.subItems" [item]="subItem"></vr-sidenav-item>
+</mat-nav-list>

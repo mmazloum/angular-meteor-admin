@@ -1,0 +1,37 @@
+:host {
+  display: block;
+}
+
+mat-icon {
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+  margin: 24px 16px 8px;
+  color: #333;
+}
+
+.extra {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+p {
+  margin-top: 0;
+}
+
+.icon-list {
+
+  .icon {
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+
+    @media screen and (max-width: 970px) {
+      width: 50%;
+    }
+
+    .icon-name {
+      display: block;
+    }
+  }
+}

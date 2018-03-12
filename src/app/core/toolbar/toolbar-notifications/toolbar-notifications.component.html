@@ -1,0 +1,83 @@
+<div class="toolbar-button" fxLayout="row" fxLayoutAlign="start center" (msClickOutside)="onClickOutside()">
+  <button class="icon-button" type="button" mat-button (click)="toggleDropdown()" [class.open]="isOpen">
+    <mat-icon class="icon">notifications_active</mat-icon>
+  </button>
+
+  <div class="dropdown mat-elevation-z1" [class.open]="isOpen">
+    <div class="card">
+      <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">
+          <div class="name">Notifications</div>
+          <div class="extra">You have 3 new notifications.</div>
+        </div>
+        <button type="button" mat-icon-button>
+          <mat-icon class="icon">settings</mat-icon>
+        </button>
+      </div>
+      <vr-scrollbar class="content">
+        <div class="notification" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">notifications</mat-icon>
+          <div class="title" fxLayout="column">
+            <div class="name">This is a notification</div>
+            <div class="time">few sec ago</div>
+          </div>
+          <span fxFlex></span>
+          <button type="button" mat-icon-button>
+            <mat-icon class="close">close</mat-icon>
+          </button>
+        </div>
+        <div class="divider"></div>
+        <div class="notification primary" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">shopping_basket</mat-icon>
+          <div class="title" fxLayout="column">
+            <div class="name">User bought your template</div>
+            <div class="time">23 min ago</div>
+          </div>
+          <span fxFlex></span>
+          <button type="button" mat-icon-button>
+            <mat-icon class="close">close</mat-icon>
+          </button>
+        </div>
+        <div class="divider"></div>
+        <div class="notification accent" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">eject</mat-icon>
+          <div class="title" fxLayout="column">
+            <div class="name">Server Crashed</div>
+            <div class="time">an hour ago</div>
+          </div>
+          <span fxFlex></span>
+          <button type="button" mat-icon-button>
+            <mat-icon class="close">close</mat-icon>
+          </button>
+        </div>
+        <div class="divider"></div>
+        <div class="notification read" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">cached</mat-icon>
+          <div class="title" fxLayout="column">
+            <div class="name">New user registered</div>
+            <div class="time">6 hours ago</div>
+          </div>
+          <span fxFlex></span>
+          <button type="button" mat-icon-button>
+            <mat-icon class="close">close</mat-icon>
+          </button>
+        </div>
+        <div class="divider"></div>
+        <div class="notification read" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">code</mat-icon>
+          <div class="title" fxLayout="column">
+            <div class="name">John added you as friend</div>
+            <div class="time">yesterday</div>
+          </div>
+          <span fxFlex></span>
+          <button type="button" mat-icon-button>
+            <mat-icon class="close">close</mat-icon>
+          </button>
+        </div>
+      </vr-scrollbar>
+      <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+        <div class="action">Mark all as read</div>
+      </div>
+    </div>
+  </div>
+</div>

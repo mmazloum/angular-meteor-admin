@@ -1,0 +1,40 @@
+.traffic-sources-card {
+  position: relative;
+  background: white;
+  padding: 0;
+
+  .title-container {
+    padding: 12px 18px;
+    color: #757575;
+    background: #EEEEEE;
+    border-bottom: 1px solid #E1E1E1;
+
+    .title {
+      font-weight: 500;
+    }
+
+    .extra {
+      font-size: 13px;
+    }
+  }
+
+  .content {
+    padding: 12px 18px;
+
+    .section {
+      text-align: center;
+
+      .source {
+        color: white;
+        border-radius: 15px;
+        padding: 5px 0;
+        font-size: 16px;
+      }
+
+      .value {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+}

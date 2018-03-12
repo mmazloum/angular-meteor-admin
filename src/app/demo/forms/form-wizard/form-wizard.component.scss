@@ -1,0 +1,15 @@
+@import "../../../../styles/_var";
+
+$height__main-toolbar__plus_8px: $toolbar-height + 8px;
+
+:host {
+  display: block;
+  padding: 36px;
+  height: calc(100% - #{$height__main-toolbar__plus_8px});
+  background: url('/assets/img/backgrounds/2.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+mat-form-field {
+  margin: 8px 0;
+}

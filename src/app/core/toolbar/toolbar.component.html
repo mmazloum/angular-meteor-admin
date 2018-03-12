@@ -1,0 +1,34 @@
+<div class="main-toolbar mat-elevation-z2">
+  <div fxLayout="row" fxLayoutAlign="start center" fxHide="false" fxHide.gt-sm>
+    <button (click)="sidenav.open()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="500px" fxHide fxShow.gt-md>
+    <vr-search-bar></vr-search-bar>
+  </div>
+
+  <vr-breadcrumbs *ngIf="showBreadcrumbs" [fxHide]="true" [fxHide.gt-sm]="false"></vr-breadcrumbs>
+
+  <span fxFlex></span>
+
+  <button [fxHide]="true" [fxHide.gt-sm]="false" mat-button class="fullscreen-toggle" (click)="toggleFullscreen()">
+    <mat-icon *ngIf="!isFullscreen">fullscreen</mat-icon>
+    <mat-icon *ngIf="isFullscreen">fullscreen_exit</mat-icon>
+  </button>
+
+  <vr-search></vr-search>
+
+  <div class="">
+    <vr-toolbar-notifications></vr-toolbar-notifications>
+  </div>
+
+  <div class="user-button-container">
+    <vr-toolbar-user-button></vr-toolbar-user-button>
+  </div>
+
+  <button mat-button class="quickpanel-toggle" (click)="quickpanel.open()">
+    <mat-icon>format_align_right</mat-icon>
+  </button>
+</div>

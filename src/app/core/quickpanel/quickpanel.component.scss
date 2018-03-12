@@ -1,0 +1,30 @@
+.overflow-container {
+  height: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  width: 100%;
+}
+
+.text-padding {
+  padding: 24px;
+}
+
+p {
+  color: #444;
+}
+
+.h1 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h4 {
+  color: #212121;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

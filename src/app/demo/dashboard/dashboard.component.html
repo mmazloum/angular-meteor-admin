@@ -1,0 +1,69 @@
+<div class="dashboard" fxLayout="column" fxLayoutGap="16px">
+  <div fxLayout="column" fxLayoutGap="16px"
+       fxLayout.gt-md="row" fxLayoutAlign.gt-md="start start">
+    <div fxLayout="column" fxLayoutGap="16px" fxFlex="auto" fxFlex.gt-md>
+      <vr-bar-chart widgetTitle="Total Sales" bgColor="linear-gradient(60deg, #8C99E0, #6572B8)" textColor="#FFFFFF"
+                    chartColor="#FFFFFF" gain="16.3" comparedTo="% compared to last month"
+                    [data]="discreteBarDemoData">
+      </vr-bar-chart>
+    </div>
+    <div fxLayout="column" fxLayoutGap="16px" fxFlex="auto" fxFlex.gt-md>
+      <vr-line-chart widgetTitle="Visits" bgColor="linear-gradient(60deg, #4DD0E2, #4CA8BA)" textColor="#FFFFFF"
+                     chartColor="#FFFFFF" gain="42.5" comparedTo="% compared to last month"
+                     [data]="lineChartDemoData">
+      </vr-line-chart>
+    </div>
+    <div fxLayout="column" fxLayoutGap="16px" fxFlex="auto" fxFlex.gt-md>
+      <vr-line-chart widgetTitle="Total Clicks" bgColor="linear-gradient(60deg, #81C683, #62A864)" textColor="#FFFFFF"
+                     chartColor="#FFFFFF" interpolate="true" gain="-6.1" comparedTo="% compared to last month"
+                     [data]="lineChartInterpolatedDemoData">
+      </vr-line-chart>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="16px"
+       fxLayout.gt-md="row" fxLayoutAlign.gt-md="start start">
+    <div fxLayout="column" fxLayoutGap="16px" fxFlex="auto" fxFlex.gt-md>
+      <vr-traffic-sources [chartData]="trafficSourcesDemoData"></vr-traffic-sources>
+      <vr-message-widget></vr-message-widget>
+    </div>
+    <div fxLayout="column" fxLayoutGap="16px" fxFlex="auto" fxFlex.gt-md>
+      <vr-pie-chart [data]="pieChartDemoData" widgetTitle="Top 5 Categories" subTitle="Compared by sale share" textColor="#757575"></vr-pie-chart>
+      <mat-card class="social-card">
+        <mat-card-header>
+          <img mat-card-avatar src="assets/img/avatars/3.png">
+          <mat-card-subtitle>
+            Yesterday
+          </mat-card-subtitle>
+          <mat-card-title>Sophie Miller</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="assets/img/backgrounds/1.jpg">
+        <mat-card-content>
+          <p>Piqued favour stairs it enable exeter as seeing. Remainder met improving but engrossed sincerity age.</p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+          <div fxLayout="row">
+            <button mat-icon-button>
+              <mat-icon>share</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <span fxFlex></span>
+            <button mat-button>
+              More Info
+            </button>
+            <button mat-button>
+              Save as
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxLayoutGap="16px" fxFlex="auto" fxFlex.gt-md>
+      <vr-recent-sales [sales]="recentSalesProductsDemoData" [chartData]="recentSalesDemoData"></vr-recent-sales>
+      <vr-google-maps-widget height="450px"></vr-google-maps-widget>
+    </div>
+  </div>
+</div>

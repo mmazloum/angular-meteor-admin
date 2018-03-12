@@ -1,0 +1,98 @@
+.card {
+  background: white;
+  border-radius: 2px;
+
+  @include mat-elevation(2);
+
+  .header {
+    min-height: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    border-bottom: 1px solid #e0e0e0;
+    color: #757575;
+    background: #EEEEEE;
+
+    .name {
+      font-weight: 500;
+    }
+
+    .extra {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .icon {
+
+    }
+  }
+
+  .footer {
+    padding: 8px 16px;
+    border-top: 1px solid #E0E0E0;
+
+    button + button {
+      margin-left: 8px;
+    }
+  }
+}
+
+.preview-card {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  border-radius: 4px;
+
+  @include mat-elevation(8);
+
+  .preview {
+    padding: $spacing;
+    background: $theme-app-bar;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      margin-bottom: $spacing;
+
+      @include mat-typography-level-to-styles($config, title);
+    }
+
+    .preview-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 200px;
+    }
+  }
+
+  .content {
+    background: $theme-card;
+
+    @include mat-elevation(8);
+
+    .header {
+      padding: $spacing $spacing 0;
+    }
+
+    .title {
+      @include mat-typography-level-to-styles($config, headline);
+    }
+
+    .tag {
+      color: $theme-secondary-text;
+      @include mat-typography-level-to-styles($config, body-1);
+    }
+
+    .tabs {
+      margin-top: $spacing;
+      border-top: 1px solid $theme-divider;
+    }
+
+    .tab-content {
+      padding: $spacing;
+    }
+  }
+}

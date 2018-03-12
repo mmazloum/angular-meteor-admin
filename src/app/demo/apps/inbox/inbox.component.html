@@ -1,0 +1,239 @@
+<div class="inbox" fxLayout="column">
+  <div class="header mat-elevation-z2"></div>
+  <div class="container" fxLayout="row">
+    <div class="navigation" fxFlex="250px" fxHide="true" fxHide.gt-md="false">
+
+      <div class="title-container">
+        <mat-icon>mail</mat-icon>
+        <span class="title">Inbox</span>
+      </div>
+
+      <div class="compose-container">
+        <button (click)="openComposeDialog()" class="compose" mat-raised-button color="primary">
+          <mat-icon>mode_edit</mat-icon>
+          <span>Compose</span>
+        </button>
+      </div>
+
+      <mat-nav-list class="nav-list">
+        <h3 matSubheader>Inbox</h3>
+        <a class="nav-item" (click)="setShownMailsByGroup('primary')" [class.active]="shownMailsTypeGroup == 'primary'"
+           mat-list-item>
+          <h3 class="nav-title" matLine>
+            <mat-icon class="icon">inbox</mat-icon>
+            <span class="text">Primary {{ unreadMailsCount('primary') }}</span>
+          </h3>
+        </a>
+        <a class="nav-item" (click)="setShownMailsByGroup('social')" [class.active]="shownMailsTypeGroup == 'social'" mat-list-item>
+          <h3 class="nav-title" matLine>
+            <mat-icon class="icon">group</mat-icon>
+            <span class="text">Social {{ unreadMailsCount('social') }}</span>
+          </h3>
+        </a>
+        <a class="nav-item" (click)="setShownMailsByGroup('promotions')" [class.active]="shownMailsTypeGroup == 'promotions'" mat-list-item>
+          <h3 class="nav-title" matLine>
+            <mat-icon class="icon">local_offer</mat-icon>
+            <span class="text">Promotions {{ unreadMailsCount('promotions') }}</span>
+          </h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a class="nav-item" (click)="setShownMailsToStarred()" [class.active]="shownMailsTypeGroup == 'starred'" mat-list-item>
+          <h3 class="nav-title" matLine>
+            <mat-icon class="icon">star</mat-icon>
+            <span class="text">Starred</span>
+          </h3>
+        </a>
+        <a class="nav-item" (click)="setShownMailsByType('sent')" [class.active]="shownMailsTypeGroup == 'sent'" mat-list-item>
+          <h3 class="nav-title" matLine>
+            <mat-icon class="icon">send</mat-icon>
+            <span class="text">Sent Mails</span>
+          </h3>
+        </a>
+        <a class="nav-item" (click)="setShownMailsByType('draft')" [class.active]="shownMailsTypeGroup == 'draft'" mat-list-item>
+          <h3 class="nav-title" matLine>
+            <mat-icon class="icon">drafts</mat-icon>
+            <span class="text">Drafts</span>
+          </h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a class="nav-item" (click)="setShownMailsByType('spam')" [class.active]="shownMailsTypeGroup == 'spam'" mat-list-item>
+          <h3 class="nav-title" matLine>
+            <mat-icon class="icon">backspace</mat-icon>
+            <span class="text">Spam</span>
+          </h3>
+        </a>
+        <a class="nav-item" (click)="setShownMailsByType('trash')" [class.active]="shownMailsTypeGroup == 'trash'" mat-list-item>
+          <h3 class="nav-title" matLine>
+            <mat-icon class="icon">delete</mat-icon>
+            <span class="text">Trash</span>
+          </h3>
+        </a>
+      </mat-nav-list>
+    </div>
+
+    <div class="content-container" fxFlex fxLayout="column">
+
+      <div class="search mat-elevation-z2" fxLayout="row">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon>search</mat-icon>
+        </div>
+        <input fxFlex type="search" placeholder="Search...">
+      </div>
+
+      <div class="mails-container mat-elevation-z2" fxFlex>
+        <div *ngIf="!shownMailDetail" class="toolbar" fxLayout="row" fxLayoutAlign="start center">
+          <mat-checkbox class="checkbox" (click)="toggleSelectAllThreads()"></mat-checkbox>
+          <span fxFlex><!-- fill space --></span>
+          <span>1 - 25 of {{ shownMails.length }}</span>
+          <div class="chevrons">
+            <button mat-icon-button>
+              <mat-icon>chevron_left</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>chevron_right</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="shownMailDetail" class="toolbar toolbar-detail" fxLayout="row" fxLayoutAlign="start center">
+          <div class="icon-group">
+            <button class="back" (click)="resetTemporaries()" mat-icon-button matTooltip="Back">
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+          </div>
+          <div class="icon-group">
+            <button class="archive" mat-icon-button matTooltip="Archive">
+              <mat-icon>archive</mat-icon>
+            </button>
+            <button class="spam" mat-icon-button matTooltip="Mark as Spam">
+              <mat-icon>backspace</mat-icon>
+            </button>
+            <button class="delete" mat-icon-button matTooltip="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="icon-group">
+            <button class="archive" mat-icon-button matTooltip="Move to">
+              <mat-icon>folder</mat-icon>
+            </button>
+            <button class="spam" mat-icon-button matTooltip="Label">
+              <mat-icon>label</mat-icon>
+            </button>
+          </div>
+          <button class="delete" [matMenuTriggerFor]="mailOptions" mat-icon-button>
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <span fxFlex><!-- fill space --></span>
+          <span>1 - 25 of {{ shownMails.length }}</span>
+          <div class="chevrons">
+            <button mat-icon-button>
+              <mat-icon>chevron_left</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>chevron_right</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mails">
+          <div *ngIf="!shownMailDetail" class="mail-list">
+            <a class="mail" #mailList *ngFor="let mail of shownMails" fxLayout="row" [class.read]="mail.read">
+              <div fxHide="true" fxHide.gt-xs="false" class="start-wrapper" fxFlex="180px" fxFlex.gt-sm="270px" fxLayout="row" fxLayoutAlign="start center">
+                <mat-checkbox class="checkbox" [checked]="isSelected(mail)"></mat-checkbox>
+                <button fxHide="true" fxHide.gt-sm="false" mat-icon-button (click)="toggleStarred(mail)">
+                  <mat-icon *ngIf="!mail.starred" class="star">star_border</mat-icon>
+                  <mat-icon *ngIf="mail.starred" class="star active">star</mat-icon>
+                </button>
+                <img fxHide="true" fxHide.gt-sm="false" class="from-avatar" src="//placehold.it/40x40">
+                <span class="from-name">{{ mail.from.name }}</span>
+              </div>
+              <p class="content-wrapper" fxLayout="row" fxLayoutAlign="start center">
+                <span class="labels">
+                  <span class="label" *ngFor="let label of mail.labels" [style.background]="label.color">{{ label.name }}</span>
+                </span>
+                <span class="subject">{{ mail.subject }}</span>
+                <span class="middot">&middot;</span>
+                <span class="content">{{ mail.content }}</span>
+              </p>
+              <div fxHide="true" fxHide.gt-xs="false" fxFlex="100px" fxFlex.gt-sm="200px" class="end-wrapper" fxLayout="row" fxLayoutAlign="end center">
+                <span class="when">{{ mail.when.fromNow() }}</span>
+                <button fxHide="true" fxHide.gt-sm="false"  class="options" [matMenuTriggerFor]="mailOptions" mat-icon-button>
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+              </div>
+            </a>
+          </div>
+
+          <div class="no-mails-container" *ngIf="shownMails.length == 0 && !shownMailDetail" fxLayout="column" fxLayoutAlign="start center">
+            <span class="no-mails">No mails in {{ shownMailsTypeGroup }}</span>
+          </div>
+
+          <div class="mail-detail" *ngIf="shownMailDetail">
+
+            <div class="mail-header" fxLayout="row">
+              <img class="avatar" src="//placehold.it/40x40">
+              <div class="mail-info" fxLayout="column">
+                <span class="from">{{ shownMailDetail.from.name }}</span>
+                <span class="to">to me <mat-icon>arrow_drop_down</mat-icon></span>
+              </div>
+              <span fxFlex><!-- fill space--></span>
+              <div class="mail-extra">
+                <span class="when">{{ shownMailDetail.when.fromNow() }}</span>
+                <button class="options" [matMenuTriggerFor]="mailOptions" mat-icon-button>
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="mail-content">
+              <div class="mail-content-text">
+                <p>{{ shownMailDetail.content }}</p>
+              </div>
+
+              <div class="attachments-container" *ngIf="shownMailDetail.attachments">
+                <div class="attachments-header" fxLayout="row" fxLayoutAlign="start center">
+                  <span class="title">Attachments</span>
+                  <mat-divider fxFlex></mat-divider>
+                  <button class="download" mat-icon-button>
+                    <mat-icon>file_download</mat-icon>
+                  </button>
+                </div>
+
+                <div class="attachments" fxLayout="row" fxLayoutWrap="wrap">
+                  <div class="attachment" *ngFor="let attachment of shownMailDetail.attachments">
+                    <img class="pointer" [src]="attachment">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="respond" (click)="setRespondActive(true)" fxLayout="row" fxLayoutAlign="start center" *ngIf="!respondActive">
+              <img class="avatar" src="assets/img/avatars/noavatar.png">
+              <span class="click-reply">Click to <span class="semi-bold">Reply</span> or <span class="semi-bold">Forward</span></span>
+              <span fxFlex><!-- fill space --></span>
+              <mat-icon class="reply">reply</mat-icon>
+              <mat-icon class="forward">forward</mat-icon>
+            </div>
+
+            <div class="respond respond-active" *ngIf="respondActive">
+              <quill-editor></quill-editor>
+              <div class="respond-buttons" fxLayout="row" fxLayoutAlign="end stretch">
+                <button mat-button (click)="setRespondActive(false)">Cancel</button>
+                <button mat-raised-button color="primary" (click)="setRespondActive(false)">Send <mat-icon>send</mat-icon></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<mat-menu #mailOptions="matMenu">
+  <button mat-menu-item> <mat-icon>markunread_mailbox</mat-icon> Mark as unread </button>
+  <button mat-menu-item> <mat-icon>label</mat-icon> Labels </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item> <mat-icon>delete</mat-icon> Delete </button>
+</mat-menu>

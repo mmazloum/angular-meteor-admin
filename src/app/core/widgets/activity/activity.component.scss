@@ -1,0 +1,41 @@
+/**
+  @Component: ActivityComponent
+ */
+
+.activity-card {
+  position: relative;
+  background: white;
+  padding: 0;
+
+  .title-container {
+    padding: 12px 18px;
+    color: #757575;
+    background: #EEEEEE;
+    border-bottom: 1px solid #E1E1E1;
+
+    .title {
+      font-weight: 500;
+    }
+
+    .extra {
+      font-size: 13px;
+
+      .arrow {
+        width: 14px;
+        height: 14px;
+        font-size: 14px;
+        vertical-align: sub;
+      }
+    }
+  }
+
+  .mat-nav-list {
+    padding: 0;
+
+    .extra {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #757575;
+    }
+  }
+}

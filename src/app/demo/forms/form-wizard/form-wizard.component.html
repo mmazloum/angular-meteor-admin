@@ -1,0 +1,165 @@
+<mat-card fxFlex="90%" style="padding: 0;">
+  <mat-toolbar color="primary">Form Wizard</mat-toolbar>
+  <mat-card-content>
+    <mat-tab-group [selectedIndex]="selectedIndex">
+      <mat-tab label="ACCOUNT DETAILS">
+        <form #form="ngForm">
+          <div fxLayout="column" style="padding: 16px;">
+            <mat-form-field>
+              <input matInput
+                     name="username"
+                     placeholder="Username"
+                     required
+                     ngModel="DavidSmith33">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput
+                     name="email"
+                     type="email"
+                     required
+                     ngModel
+                     placeholder="E-Mail">
+            </mat-form-field>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex>
+                <input matInput
+                       name="password"
+                       type="password"
+                       required
+                       ngModel
+                       placeholder="Password">
+              </mat-form-field>
+              <mat-form-field fxFlex>
+                <input matInput
+                       name="password_confirm"
+                       type="password"
+                       required
+                       ngModel
+                       placeholder="Confirm Password">
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <button mat-button
+                      type="button"
+                      disabled>Previous</button>
+
+              <button color="primary"
+                      mat-raised-button
+                      style="margin-left: 8px;"
+                      [disabled]="!form.valid"
+                      (click)="nextStep()"
+                      type="button">Next</button>
+            </div>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="YOUR ADDRESS" [disabled]="!form.valid">
+        <form #form2="ngForm">
+          <div fxLayout="column" style="padding: 16px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex>
+                <input matInput
+                       name="firstname"
+                       placeholder="First Name"
+                       required>
+              </mat-form-field>
+              <mat-form-field fxFlex>
+                <input matInput
+                       name="lastname"
+                       placeholder="Last Name"
+                       required
+                       ngModel>
+              </mat-form-field>
+            </div>
+
+            <mat-form-field fxFlex>
+              <input matInput
+                     name="street"
+                     required
+                     ngModel
+                     placeholder="Street">
+            </mat-form-field>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex>
+                <input matInput
+                       name="zipcode"
+                       required
+                       ngModel
+                       placeholder="Zipcode">
+              </mat-form-field>
+              <mat-form-field fxFlex>
+                <input matInput
+                       name="city"
+                       required
+                       ngModel
+                       placeholder="City">
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <button mat-button
+                      type="button"
+                      (click)="previousStep()">Previous</button>
+
+              <button color="primary"
+                      mat-raised-button
+                      style="margin-left: 8px;"
+                      [disabled]="!form2.valid"
+                      (click)="nextStep()"
+                      type="button">Next</button>
+            </div>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="BILLING DETAILS"  [disabled]="!form2.valid">
+        <form #form3="ngForm">
+          <div fxLayout="column" style="padding: 16px;">
+            <mat-form-field fxFlex>
+              <input matInput
+                     name="creditcard"
+                     placeholder="Credit Card Number"
+                     required>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput
+                     name="creditcardname"
+                     required
+                     ngModel
+                     placeholder="Credit Card Owner">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput
+                     name="expirydate"
+                     required
+                     ngModel
+                     placeholder="Expiry Date (MM/YYYY)">
+            </mat-form-field>
+
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <button mat-button
+                      type="button"
+                      (click)="previousStep()">Previous</button>
+
+              <button color="primary"
+                      mat-raised-button
+                      style="margin-left: 8px;"
+                      [disabled]="!form3.valid"
+                      (click)="nextStep()"
+                      type="button">Next</button>
+            </div>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="CONFIRMATION"  [disabled]="!form3.valid">
+        <div fxLayout="column" style="padding: 16px;">
+          <h1>Congratulations!</h1>
+          <p>You submitted the form.</p>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,22 @@
+.card {
+
+  .content {
+    padding: 0;
+
+    .list-message {
+      color: #333;
+      font-size: 14px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin-top: 4px;
+
+      .status-circle {
+        vertical-align: middle;
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+

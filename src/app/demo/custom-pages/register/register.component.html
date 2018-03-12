@@ -1,0 +1,28 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;">
+  <div class="register mat-elevation-z12">
+    <div class="register-header" fxLayout="column" fxLayoutAlign="center center">
+      <img src="assets/img/icon.png">
+    </div>
+    <form #form="ngForm" (ngSubmit)="register()">
+      <div class="register-content" fxLayout="column" fxLayoutAlign="start stretch">
+        <mat-form-field>
+          <input matInput placeholder="Name" type="text" name="name" required [(ngModel)]="name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="E-Mail" type="text" name="email" required [(ngModel)]="email">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="password">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password (Confirm)" type="password" name="password-confirm" required [(ngModel)]="passwordConfirm">
+        </mat-form-field>
+        <div class="extra-options" fxLayout="row" fxLayoutAlign="center center">
+          <mat-checkbox class="remember-me">I accept the <a href="#">terms and conditions.</a></mat-checkbox>
+        </div>
+        <button color="primary" mat-raised-button [disabled]="!form.valid">CREATE ACCOUNT</button>
+        <p class="note">Already have an account?<br/> <a [routerLink]="['/login']">Sign in here</a></p>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700');
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import '~normalize.css/normalize.css';
+@import '~angular-calendar/scss/angular-calendar.scss';
+@import "styles/_highlightjs.scss";
+@import '~nvd3/build/nv.d3.css';
+@import "~quill/dist/quill.snow.css";
+@import "styles/_var-material.scss";
+@import "styles/_var.scss";
+@import 'styles/_tables.scss';
+@import 'styles/_charts.scss';
+@import "styles/_cards.scss";
+@import "styles/_inbox.scss";
+@import "styles/_calendar.scss";
+@import "styles/_misc.scss";
+@import "styles/_tabs.scss";
+
+@keyframes pageLoad {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.page-load-animation {
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  animation: pageLoad linear 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+  animation-delay: 0.5s;
+  background: #2B303B;
+  z-index: 9999;
+  pointer-events: none;
+}

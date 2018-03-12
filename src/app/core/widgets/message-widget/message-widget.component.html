@@ -1,0 +1,48 @@
+<div class="card border space">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="column">
+      <div class="name">My Messages</div>
+      <div class="extra">Your personal messages.</div>
+    </div>
+
+    <div class="actions" fxLayout="row">
+      <button type="button" mat-icon-button [matMenuTriggerFor]="cardMenuRef">
+        <mat-icon class="icon">more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="content" fxLayout="column">
+    <mat-nav-list>
+      <mat-list-item *ngFor="let message of messages">
+        <img matListAvatar [src]="message.image">
+        <h3 matLine>{{ message.from }}</h3>
+        <h4 class="list-message" matLine>
+          {{message.message}}
+        </h4>
+        <button type="button" mat-icon-button>
+          <mat-icon>reply</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+
+  <div class="footer" fxLayout="row" fxLayoutAlign="end center">
+    <button type="button" mat-button color="primary">NEW MESSAGE</button>
+  </div>
+</div>
+
+<mat-menu #cardMenuRef="matMenu">
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    <span>Refresh</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Remove Widget</span>
+  </button>
+</mat-menu>

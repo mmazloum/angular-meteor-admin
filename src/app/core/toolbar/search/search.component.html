@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="center stretch" style="height: 100%;">
+  <button class="search-button" mat-button (click)="open()">
+    <mat-icon>search</mat-icon>
+  </button>
+  <mat-form-field class="search" floatingPlaceholder="false" [class.search-open]="isOpen">
+    <input #input (blur)="close()" matInput placeholder="Search...">
+  </mat-form-field>
+</div>
+
+
+<!--<div fxLayout="row" fxLayoutAlign="end center">
+  <div class="search-wrapper" fxLayout="row" [class.focus]="isFocused()" fxShow="false" fxShow.gt-md="true">
+    <mat-icon class="search-icon">search</mat-icon>
+    <input type="search"
+           autocomplete="off"
+           spellcheck="off"
+           class="search-input"
+           [(ngModel)]="search"
+           (focus)="focus()"
+           (blur)="blur()"
+           placeholder="Search">
+  </div>
+</div>
+-->

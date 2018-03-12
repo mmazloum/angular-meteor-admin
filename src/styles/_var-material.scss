@@ -1,0 +1,84 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+//$theme-primary: mat-palette($mat-teal);
+//$bz-color-accent:  mat-palette($mat-green);
+//$theme-accent:  mat-palette($mat-light-blue, 500, 200, 700);
+
+$theme-primary: mat-palette($mat-blue-grey, 700, 500, 900);
+$theme-accent: mat-palette($mat-blue);
+$theme-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+
+/**
+ USAGE:
+  .my-class {
+    color: mat-color($color-primary);
+  }
+ */
+$color-primary: map-get($theme, primary);
+$color-accent: map-get($theme, accent);
+$color-warn: map-get($theme, warn);
+
+/**
+ USAGE:
+  .my-class {
+    @include mat-typography-level-to-styles($config, input);
+  }
+ */
+$config: mat-typography-config(
+  $font-family: 'Roboto, "Helvetica Neue", sans-serif',
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 400),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 400),
+  $title: mat-typography-level(20px, 32px, 500),
+  $subheading-2: mat-typography-level(16px, 28px, 400),
+  $subheading-1: mat-typography-level(15px, 24px, 400),
+  $body-2: mat-typography-level(14px, 24px, 500),
+  $body-1: mat-typography-level(14px, 20px, 400),
+  $caption: mat-typography-level(12px, 20px, 400),
+  $button: mat-typography-level(14px, 14px, 500),
+    // Line-height must be unit-less fraction of the font-size.
+  $input: mat-typography-level(16px, 1.125, 400)
+);
+
+/**
+ USAGE:
+  .my-class {
+    background: $theme-background;
+  }
+ */
+$theme-foreground-map: map-get($theme, foreground);
+$theme-background-map: map-get($theme, background);
+$theme-primary-map: map-get($theme, primary);
+$theme-accent-map: map-get($theme, accent);
+$theme-warn-map: map-get($theme, warn);
+
+$theme-text: mat-color($theme-foreground-map, text);
+$theme-hint-text: mat-color($theme-foreground-map, hint-text);
+$theme-secondary-text: mat-color($theme-foreground-map, secondary-text);
+$theme-divider: mat-color($theme-foreground-map, divider);
+$theme-icon: mat-color($theme-foreground-map, icon);
+
+$theme-background: mat-color($theme-background-map, background);
+$theme-app-bar: mat-color($theme-background-map, app-bar);
+$theme-background-hover: mat-color($theme-background-map, hover);
+
+$theme-card: mat-color($theme-background-map, card);

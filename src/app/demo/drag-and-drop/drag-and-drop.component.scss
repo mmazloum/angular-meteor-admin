@@ -1,0 +1,65 @@
+:host {
+  display: block;
+  background: #fff url('/assets/img/backgrounds/2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+h1 {
+  color: white;
+  text-shadow: 0 0 10px black;
+}
+
+.container {
+  width: 90%;
+  padding: 100px 0 0;
+  margin: 0 auto;
+}
+
+.list-container {
+  width: 100%;
+  margin: 24px;
+
+  mat-list-item {
+    background: white;
+  }
+
+  .list {
+    margin: 24px;
+  }
+
+  mat-list {
+    padding-top: 0;
+    max-width: 100%;
+  }
+}
+
+mat-icon.left-right-compare {
+  text-shadow: 0px 0px 20px #444;
+  font-size: 60px;
+  width: 60px;
+  height: 60px;
+  color: white;
+}
+
+.small-list-item {
+  padding-left: 6px;
+  padding-right: 16px;
+}
+
+.draggable {
+  cursor: move;
+  cursor: -webkit-grabbing;
+}
+
+.drag-handle {
+  cursor: move;
+  cursor: -webkit-grabbing;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.sortable-ghost {
+  opacity: .5;
+}

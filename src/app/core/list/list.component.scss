@@ -1,0 +1,88 @@
+@import "../../../styles/var";
+
+.list-table {
+  margin-bottom: $spacing;
+
+  .list-header {
+    background: white;
+    padding-left: $spacing;
+    padding-right: $spacing;
+    border-bottom: 1px solid $divider-color;
+    height: 60px;
+
+    .list-name {
+      color: $color;
+      padding-right: $spacing;
+      border-right: 1px solid $divider-color;
+      font-size: 20px;
+      line-height: 32px;
+      font-weight: 500;
+    }
+
+    .filter-input {
+      padding-left: $spacing;
+      font-size: 16px;
+      line-height: 1.125;
+
+      .filter-input-icon {
+        width: 1.2em;
+        color: $secondary-color;
+        vertical-align: bottom;
+        height: 22px;
+        font-size: 22px;
+      }
+    }
+
+    .column-filter {
+      margin-left: $spacing;
+      color: $secondary-color;
+    }
+
+    .create {
+      margin-left: $spacing;
+    }
+  }
+
+  .mat-header-row {
+    background: #F5F5F5;
+
+    .mat-header-cell .mat-sort-header-button {
+      text-transform: uppercase;
+    }
+  }
+
+  .mat-row {
+
+    &:hover {
+      background: rgba(black, 0.04);
+    }
+  }
+
+  .mat-cell.image-cell, .mat-header-cell.image-cell {
+    flex: 0;
+    min-width: 35px + $spacing;
+
+    img {
+      border-radius: 50%;
+      height: 35px;
+      width: 35px;
+      margin-right: $spacing;
+      vertical-align: middle;
+    }
+  }
+
+  .mat-cell.actions-cell, .mat-header-cell.actions-cell {
+    flex: 0;
+    min-width: 40px;
+    overflow: visible;
+
+    button {
+      color: $secondary-color;
+    }
+  }
+
+  .paginator {
+    display: block;
+    background: #F5F5F5;
+  }
+}

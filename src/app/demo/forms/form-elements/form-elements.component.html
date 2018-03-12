@@ -1,0 +1,377 @@
+<div fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="center center" style="margin: 24px 0;">
+    <mat-card fxFlex>
+      <mat-card-title>Basic Form Elements</mat-card-title>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-content fxLayout="column">
+
+        <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" style="margin: 24px 0">
+
+          <div fxFlex fxFlex.gt-md="30%" style="margin-right: 24px;">
+            <div fxLayout="column">
+              <h3>Input field</h3>
+              <h4>&lt;mat-input&gt;</h4>
+              <p>
+                Input fields with float labels greatly improve the usability of Forms. The user focuses the input and does not
+                lose the context of the field.
+              </p>
+              <h5>Example:</h5>
+              <p><code vrHighlight class="html">&lt;mat-form-field&gt;<br/> &lt;input matInput&gt;<br/>&lt;/mat-form-field&gt;</code></p>
+            </div>
+          </div>
+
+          <div class="demo-tabs mat-elevation-z2" fxFlex>
+            <mat-tab-group>
+              <mat-tab label="PREVIEW">
+                <div class="demo-preview" fxLayout="row" fxLayoutAlign="center center">
+                  <mat-card fxFlex="80%" fxFlex.sm="90%">
+                    <mat-card-content fxLayout="column">
+                      <div fxLayout="column" fxLayout.gt-md="row">
+                        <mat-form-field fxFlex>
+                          <input matInput
+                                 placeholder="First Name">
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                          <input matInput
+                                 placeholder="Last Name">
+                        </mat-form-field>
+                      </div>
+                      <div fxLayout="column" fxLayout.gt-md="row">
+                        <mat-form-field fxFlex dividerColor="accent">
+                          <input matInput
+                                 placeholder="Pre-filled Input + Accent color" value="Material Design">
+                        </mat-form-field>
+                      </div>
+                      <div fxLayout="column" fxLayout.gt-md="row">
+                        <mat-form-field fxFlex>
+                          <input matInput
+                                 placeholder="Address">
+                          <span matPrefix><mat-icon>place</mat-icon></span>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                          <input matInput
+                                 placeholder="City">
+                          <span matPrefix><mat-icon>location_city</mat-icon></span>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                          <input matInput
+                                 placeholder="Country">
+                          <span matSuffix><mat-icon>local_airport</mat-icon></span>
+                        </mat-form-field>
+                      </div>
+                      <div fxLayout="column" fxLayout.gt-md="row">
+                        <mat-form-field fxFlex>
+                          <input matInput
+                                 placeholder="Character count (max. 100)"
+                                 maxlength="100"
+                                 #characterCountHintExample
+                                 value="Hello! How are you today?">
+                          <mat-hint align="end">{{ characterCountHintExample.value.length }} / 100</mat-hint>
+                        </mat-form-field>
+                      </div>
+                      <div fxLayout="column" fxLayout.gt-md="row">
+                        <mat-form-field fxFlex>
+                          <input matInput
+                                 placeholder="Primary Color">
+                        </mat-form-field>
+                        <mat-form-field dividerColor="accent" fxFlex>
+                          <input matInput
+                                 placeholder="Accent Color">
+                        </mat-form-field>
+                        <mat-form-field dividerColor="warn" fxFlex>
+                          <input matInput
+                                 placeholder="Warn Color">
+                        </mat-form-field>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </mat-tab>
+              <mat-tab label="HTML">
+                <code [innerHTML]="getEscaped(inputFieldHTML)" vrHighlight class="html"></code>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+
+        </div>
+
+        <h3>API Summary</h3>
+
+        <div fxLayout="row">
+          <table class="table table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code vrHighlight class="inline">align</code></td>
+                <td><code vrHighlight class="inline">"start" | "end"</code></td>
+                <td>The alignment of the <code vrHighlight class="inline">input</code> or <code vrHighlight class="inline">textarea</code>.</td>
+                <td><code vrHighlight class="inline">"start"</code></td>
+              </tr>
+              <tr>
+                <td><code vrHighlight class="inline">dividerColor</code></td>
+                <td><code vrHighlight class="inline">"primary" | "accent" | "warn"</code></td>
+                <td>The color of the placeholder and underline.</td>
+                <td><code vrHighlight class="inline">"primary"</code></td>
+              </tr>
+              <tr>
+                <td><code vrHighlight class="inline">floatingPlaceholder</code></td>
+                <td><code vrHighlight class="inline">boolean</code></td>
+                <td>Whether the placeholder should float above the input after text is entered.</td>
+                <td><code vrHighlight class="inline">true</code></td>
+              </tr>
+              <tr>
+                <td><code vrHighlight class="inline">hintLabel</code></td>
+                <td><code vrHighlight class="inline">string</code></td>
+                <td>The hint text to show on the start end of the <code vrHighlight class="inline">mat-form-field</code></td>
+                <td><code vrHighlight class="inline">null</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center" style="margin: 0 0 24px;">
+    <mat-card fxFlex>
+
+      <mat-card-content fxLayout="column">
+
+        <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" style="margin: 0 0 24px">
+
+          <div fxFlex fxFlex.gt-md="30%" style="margin-right: 24px;">
+            <div fxLayout="column">
+              <h3>Switches</h3>
+              <h4>&lt;mat-slide-toggle&gt;</h4>
+              <p>
+                Switches toggle the state of a single settings option. The option that the switch controls, as well as the state it’s in, should be made clear from the corresponding inline label.
+              </p>
+              <h5>Example:</h5>
+              <p><code vrHighlight class="html">&lt;mat-slide-toggle&gt;<br/> Switch<br/>&lt;/mat-slide-toggle&gt;</code></p>
+            </div>
+          </div>
+
+          <div fxFlex>
+            <div fxLayout="column">
+              <mat-slide-toggle [(ngModel)]="switch1">
+                Simple Switch: {{ switch1 }}
+              </mat-slide-toggle>
+              <mat-slide-toggle color="primary" [(ngModel)]="switch2">
+                Primary Color Switch: {{ switch2 }}
+              </mat-slide-toggle>
+              <mat-slide-toggle color="warn" [(ngModel)]="switch3">
+                Warn Color Switch: {{ switch3 }}
+              </mat-slide-toggle>
+              <mat-slide-toggle [(ngModel)]="switch4" disabled>
+                Disabled Switch
+              </mat-slide-toggle>
+              <mat-slide-toggle [(ngModel)]="switch5" disabled>
+                Disabled Switch (Active)
+              </mat-slide-toggle>
+            </div>
+          </div>
+
+        </div>
+
+        <h3>API Summary</h3>
+
+        <div fxLayout="row">
+          <table class="table table-striped table-condensed">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Default Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><code vrHighlight class="inline">disabled</code></td>
+              <td><code vrHighlight class="inline">boolean</code></td>
+              <td>Disables the <code vrHighlight class="inline">switch</code></td>
+              <td><code vrHighlight class="inline">false</code></td>
+            </tr>
+            <tr>
+              <td><code vrHighlight class="inline">color</code></td>
+              <td><code vrHighlight class="inline">"primary" | "accent" | "warn"</code></td>
+              <td>The color palette of the <code vrHighlight class="inline">switch</code></td>
+              <td><code vrHighlight class="inline">"accent"</code></td>
+            </tr>
+            <tr>
+              <td><code vrHighlight class="inline">checked</code></td>
+              <td><code vrHighlight class="inline">boolean</code></td>
+              <td>Sets the value of the <code vrHighlight class="inline">switch</code></td>
+              <td><code vrHighlight class="inline">false</code></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center" style="margin: 0 0 24px;">
+    <mat-card fxFlex>
+
+      <mat-card-content fxLayout="column">
+
+        <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" style="margin: 0 0 24px">
+
+          <div fxFlex fxFlex.gt-md="30%" style="margin-right: 24px;">
+            <div fxLayout="column">
+              <h3>Checkboxes</h3>
+              <h4>&lt;mat-slide-toggle&gt;</h4>
+              <p>
+                Checkboxes allow the user to select multiple options from a set.
+                If you have multiple options appearing in a list, you can preserve space by using checkboxes instead of switches.
+              </p>
+              <h5>Example:</h5>
+              <p><code vrHighlight class="html">&lt;mat-checkbox&gt;<br/> Checkbox<br/>&lt;/mat-checkbox&gt;</code></p>
+            </div>
+          </div>
+
+          <div fxFlex>
+            <div fxLayout="column">
+              <mat-checkbox [(ngModel)]="checkbox1" style="margin-bottom: 15px;">
+                Simple Checkbox: {{ checkbox1 }}
+              </mat-checkbox>
+              <mat-checkbox color="primary" [(ngModel)]="checkbox2" style="margin-bottom: 15px;">
+                Primary Color Checkbox: {{ checkbox2 }}
+              </mat-checkbox>
+              <mat-checkbox color="warn" [(ngModel)]="checkbox3" style="margin-bottom: 15px;">
+                Warn Color Checkbox: {{ checkbox3 }}
+              </mat-checkbox>
+              <mat-checkbox [(ngModel)]="checkbox4" disabled style="margin-bottom: 15px;">
+                Disabled Checkbox
+              </mat-checkbox>
+              <mat-checkbox [(ngModel)]="checkbox5" disabled style="margin-bottom: 15px;">
+                Disabled Checkbox (Active)
+              </mat-checkbox>
+            </div>
+          </div>
+
+        </div>
+
+        <h3>API Summary</h3>
+
+        <div fxLayout="row">
+          <table class="table table-striped table-condensed">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Default Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><code vrHighlight class="inline">disabled</code></td>
+              <td><code vrHighlight class="inline">boolean</code></td>
+              <td>Disables the <code vrHighlight class="inline">checkbox</code></td>
+              <td><code vrHighlight class="inline">false</code></td>
+            </tr>
+            <tr>
+              <td><code vrHighlight class="inline">color</code></td>
+              <td><code vrHighlight class="inline">"primary" | "accent" | "warn"</code></td>
+              <td>The color palette of the <code vrHighlight class="inline">checkbox</code></td>
+              <td><code vrHighlight class="inline">"accent"</code></td>
+            </tr>
+            <tr>
+              <td><code vrHighlight class="inline">checked</code></td>
+              <td><code vrHighlight class="inline">boolean</code></td>
+              <td>Sets the value of the <code vrHighlight class="inline">checkbox</code></td>
+              <td><code vrHighlight class="inline">false</code></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center" style="margin: 0 0 24px;">
+    <mat-card fxFlex>
+
+      <mat-card-content fxLayout="column">
+
+        <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" style="margin: 0 0 24px">
+
+          <div fxFlex fxFlex.gt-md="30%" style="margin-right: 24px;">
+            <div fxLayout="column">
+              <h3>Selects</h3>
+              <h4>&lt;mat-select&gt;</h4>
+              <p>
+                Selects should be used when there is a great variety of options to choose from.
+              </p>
+              <h5>Example:</h5>
+              <p><code vrHighlight class="html">&lt;mat-select&gt;<br/> &lt;mat-option&gt;Option 1&lt;/mat-option&gt;<br/> &lt;mat-option&gt;Option 2&lt;/mat-option&gt;<br/>&lt;/mat-select&gt;</code></p>
+            </div>
+          </div>
+
+          <div>
+            <div fxLayout="column">
+              <mat-form-field>
+                <mat-select [(ngModel)]="select1" placeholder="Select your favorite drink">
+                  <mat-option value="Coke">Coke</mat-option>
+                  <mat-option value="Pepsi">Pepsi</mat-option>
+                  <mat-option value="Fanta">Fanta</mat-option>
+                  <mat-option value="Water">Water</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+              Your favorite drink is: {{ select1 }}
+            </div>
+          </div>
+
+        </div>
+
+        <h3>API Summary</h3>
+
+        <div fxLayout="row">
+          <table class="table table-striped table-condensed">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Default Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><code vrHighlight class="inline">disabled</code></td>
+              <td><code vrHighlight class="inline">boolean</code></td>
+              <td>Disables the <code vrHighlight class="inline">checkbox</code></td>
+              <td><code vrHighlight class="inline">false</code></td>
+            </tr>
+            <tr>
+              <td><code vrHighlight class="inline">color</code></td>
+              <td><code vrHighlight class="inline">"primary" | "accent" | "warn"</code></td>
+              <td>The color palette of the <code vrHighlight class="inline">checkbox</code></td>
+              <td><code vrHighlight class="inline">"accent"</code></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
+

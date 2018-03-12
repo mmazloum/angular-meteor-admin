@@ -1,0 +1,15 @@
+@import "../../../../styles/_var.scss";
+
+.all-in-one-table {
+  padding: $spacing;
+}
+
+.actions {
+  .create {
+    margin-left: $spacing;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
