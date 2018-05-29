@@ -24,7 +24,7 @@ import { RecentSalesComponent } from '../core/widgets/recent-sales/recent-sales.
 import { TrafficSourcesComponent } from '../core/widgets/traffic-sources/traffic-sources.component';
 import { ForgotPasswordComponent } from './custom-pages/forgot-password/forgot-password.component';
 import { LoginComponent } from './custom-pages/login/login.component';
-import { RegisterComponent } from './custom-pages/register/register.component';
+import { RegisterComponent, RegisterDialogComponent } from './custom-pages/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
 import { EditorComponent } from './editor/editor.component';
@@ -64,6 +64,7 @@ import { GoogleMapsComponent } from './maps/google-maps/google-maps.component';
     Level5Component,
     LoginComponent,
     RegisterComponent,
+    RegisterDialogComponent,
     ForgotPasswordComponent,
     EditorComponent,
     DashboardComponent,
@@ -79,7 +80,8 @@ import { GoogleMapsComponent } from './maps/google-maps/google-maps.component';
   ],
   providers: [
     D3ChartService
-  ]
+  ],
+  entryComponents: [RegisterDialogComponent]
 })
 export class DemoModule {
 }

@@ -6,13 +6,13 @@
     <form #form="ngForm" (ngSubmit)="login()">
       <div class="login-content" fxLayout="column" fxLayoutAlign="start stretch">
           <mat-form-field>
-            <input matInput placeholder="E-Mail" type="text" name="email" required [(ngModel)]="email">
+            <input matInput placeholder="E-Mail" type="text" name="email" required [(ngModel)]="user.email" #email="ngModel">
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="password">
+            <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="user.password" #password="ngModel">
           </mat-form-field>
           <div class="extra-options" fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-checkbox class="remember-me">Remember Me</mat-checkbox>
+            <mat-checkbox class="remember-me" name="rememberMe" (change)="rememberMeCheck()" [checked]="rememberMe">Remember Me</mat-checkbox>
             <a class="forgot-password" [routerLink]="['/forgot-password']">Forgot Password?</a>
           </div>
           <button color="primary" mat-raised-button [disabled]="!form.valid">SIGN IN</button>

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  googleApi: ''
+  googleApi: 'AIzaSyD9q_inY9xWEnuUlKuwNBSIf7fZ5KsHf0I'
 };

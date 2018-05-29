@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'vr-toolbar-user-button',
@@ -8,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class ToolbarUserButtonComponent implements OnInit {
 
   isOpen: boolean;
+  username: string = "";
 
-  constructor() { }
+  constructor(private router: Router, private zone: NgZone) { }
 
   ngOnInit() {
+    if (Meteor.user()) {
+      this.username = Meteor.user().username;
+    }
   }
 
   toggleDropdown() {
@@ -22,4 +27,9 @@ export class ToolbarUserButtonComponent implements OnInit {
     this.isOpen = false;
   }
 
+  logout(): void {
+    Meteor.logout(() => {
+      this.router.navigate(['/login']).then(() => this.zone.run(() => console.log('logout')));
+    });
+  }
 }

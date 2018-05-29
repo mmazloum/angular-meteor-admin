@@ -1,10 +1,23 @@
 import { Meteor } from 'meteor/meteor';
 import { Chats } from './collections/chats';
 import { Messages } from './collections/messages';
+import { Accounts } from 'meteor/accounts-base';
 import * as moment from 'moment';
 import { MessageType } from './models';
 
 Meteor.startup(() => {
+
+  if (Meteor.users.find({}).count() === 0) {
+    Accounts.createUser({
+      username: 'DemoStart',
+      email: 'marwan.mazloum@gmail.com',
+      password: '@dminD-MO2°18'
+    })
+  }
+  else {
+    console.log('admin has one user');
+  }
+
   if (Chats.find({}).cursor.count() === 0) {
     let chatId;
 

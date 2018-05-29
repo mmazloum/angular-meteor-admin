@@ -2,7 +2,7 @@
   <button class="user-button" mat-button (click)="toggleDropdown()" [class.open]="isOpen">
     <span fxLayout="row" fxLayoutAlign="start center">
       <img class="avatar" src="assets/img/avatars/noavatar.png">
-      <span class="name" fxHide fxShow.gt-sm>David Smith</span>
+      <span class="name" fxHide fxShow.gt-sm>{{username}}</span>
       <mat-icon class="icon" fxHide fxShow.gt-sm>keyboard_arrow_down</mat-icon>
     </span>
   </button>
@@ -23,7 +23,7 @@
           <span class="title">Help</span>
         </div>
         <mat-divider></mat-divider>
-        <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple [routerLink]="['/login']">
+        <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="logout()">
           <mat-icon class="icon">exit_to_app</mat-icon>
           <span class="title">Logout</span>
         </div>

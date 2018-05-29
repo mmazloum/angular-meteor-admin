@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  googleApi: ''
+  googleApi: 'AIzaSyD9q_inY9xWEnuUlKuwNBSIf7fZ5KsHf0I'
 };
