@@ -1,0 +1,16 @@
+@import "var";
+
+.editor {
+  background: #fff url('/assets/img/backgrounds/editor.jpg');
+  background-size: cover;
+}
+
+h1 {
+  color: white;
+  text-shadow: 0 0 10px black;
+  margin-top: $spacing*3;
+}
+
+.editor-container {
+  background: white;
+}

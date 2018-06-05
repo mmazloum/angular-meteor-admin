@@ -1,0 +1,66 @@
+<div class="login"
+     fxLayout="row"
+     fxLayoutAlign="center center">
+    <div class="session-card">
+        <div class="header"
+             fxLayout="column"
+             fxLayoutAlign="center center">
+            <img src="assets/img/icon.png">
+        </div>
+        <div class="content"
+             fxLayout="column"
+             fxLayoutGap="24px"
+             [formGroup]="form">
+            <div fxFlex="grow"
+                 fxLayout="column"
+                 fxLayoutGap="8px">
+                <mat-form-field fxFlex="grow">
+                    <mat-placeholder>E-Mail</mat-placeholder>
+                    <input matInput
+                           required
+                           formControlName="email">
+                </mat-form-field>
+                <mat-form-field fxFlex="grow">
+                    <mat-placeholder>Password</mat-placeholder>
+                    <input matInput
+                           [type]="inputType"
+                           formControlName="password">
+                    <button *ngIf="!visible"
+                            type="button"
+                            mat-icon-button
+                            matSuffix
+                            (click)="show()">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button *ngIf="visible"
+                            type="button"
+                            mat-icon-button
+                            matSuffix
+                            (click)="hide()">
+                        <mat-icon>visibility_off</mat-icon>
+                    </button>
+                    <mat-hint>Try clicking the eye to toggle the visibility.</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="extra-options"
+                 fxLayout="row"
+                 fxLayoutAlign="space-between center">
+                <mat-checkbox class="remember-me">Remember Me</mat-checkbox>
+                <a class="forgot-password"
+                   [routerLink]="['/forgot-password']">Forgot Password?</a>
+            </div>
+            <button type="button"
+                    color="primary"
+                    mat-raised-button
+                    [disabled]="form.invalid"
+                    (click)="send()">
+                SIGN IN
+            </button>
+            <p class="extra">
+                Don't have an account?<br/>
+                <a [routerLink]="['/register']">Click here to create one</a>
+            </p>
+        </div>
+    </div>
+</div>

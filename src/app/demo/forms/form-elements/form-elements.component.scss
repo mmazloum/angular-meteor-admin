@@ -1,0 +1,19 @@
+@import "var";
+
+.form-elements {
+
+  .source {
+    margin-left: -$spacing;
+    margin-right: -$spacing;
+    margin-bottom: $spacing/2;
+  }
+
+  .result {
+
+    .description {
+      color: $theme-text;
+      margin: 0 0 $spacing/3 0;
+    }
+  }
+
+}

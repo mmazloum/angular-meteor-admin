@@ -1,0 +1,117 @@
+<div class="chat" fxLayout="column" fxLayoutAlign="start center" furyPage>
+  <div class="header"></div>
+
+  <mat-drawer-container class="chat-drawer-container" fxFlex="auto">
+
+    <mat-drawer class="chat-drawer" [opened]="drawerOpen" [mode]="drawerMode" #drawer fxLayout="column">
+      <div class="toolbar" fxLayout="row" fxLayoutAlign="space-between center">
+        <img class="avatar" src="assets/img/avatars/noavatar.png">
+        <span fxFlex><!-- fill space --></span>
+        <button mat-icon-button [matMenuTriggerFor]="userMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+
+      <fury-scrollbar fxFlex="grow">
+        <mat-nav-list class="contacts">
+          <mat-list-item class="contact" (click)="setActiveChat(chat)" *ngFor="let chat of chats" matRipple>
+            <img [src]="chat.picture" matListAvatar>
+            <h3 class="name" matLine>{{chat.name}}</h3>
+            <p class="message" matLine> {{chat.lastMessage}}</p>
+          </mat-list-item>
+        </mat-nav-list>
+      </fury-scrollbar>
+    </mat-drawer>
+
+    <mat-drawer-content class="chat-drawer-content" fxLayout="column" fxFlex="grow">
+      <div class="toolbar" fxLayout="row" fxFlex="noshrink" fxLayoutAlign="space-between center">
+        <div class="current-contact" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+          <button type="button" mat-icon-button (click)="drawer.open()" fxHide.gt-sm>
+            <mat-icon>menu</mat-icon>
+          </button>
+
+          <img class="avatar" [src]="activeChat.picture">
+
+          <div fxLayout="column">
+            <span class="name">{{ activeChat.name }}</span>
+            <span class="status">Online</span>
+          </div>
+        </div>
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center">
+          <button mat-icon-button>
+            <mat-icon>attach_file</mat-icon>
+          </button>
+
+          <button mat-icon-button [matMenuTriggerFor]="chatMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="messages" furyScrollbar fxFlex="grow" #messagesScroll>
+        <div class="chat-message" *ngFor="let message of chats[0].messages" [ngSwitch]="message.who"
+             fxLayout="column" fxLayoutAlign="end start">
+          <div class="partner" *ngSwitchCase="'partner'" fxFlexAlign="start" fxLayout="row"
+               fxLayoutAlign="start start">
+            <img class="avatar" [src]="activeChat.picture">
+            <span class="message mat-elevation-z1">{{ message.message }}</span>
+          </div>
+          <div class="me" *ngSwitchCase="'me'" fxFlexAlign="end" fxLayout="row" fxLayoutAlign="end start">
+            <span class="message mat-elevation-z1">{{ message.message }}</span>
+            <img class="avatar" src="assets/img/avatars/1.jpg">
+          </div>
+        </div>
+      </div>
+
+      <div class="reply" fxFlex="noshrink" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px">
+        <mat-form-field class="reply-field" fxFlex>
+          <input matInput (keyup.enter)="send()" [formControl]="replyCtrl"
+                 placeholder="Write your message">
+          <mat-hint align="end">You can also send your message with the enter key.</mat-hint>
+        </mat-form-field>
+
+        <button (click)="send()" mat-fab color="primary" [disabled]="!replyCtrl.value">
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+</div>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon> account_circle</mat-icon>
+    <span> Profile </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon> settings</mat-icon>
+    <span> Settings </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>help</mat-icon>
+    <span>Help</span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>
+    <mat-icon> exit_to_app</mat-icon>
+    <span> Logout </span>
+  </button>
+</mat-menu>
+
+<mat-menu #chatMenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon> account_circle</mat-icon>
+    <span> Contact Info </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon> volume_mute</mat-icon>
+    <span> Mute Chat </span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="clearMessages(activeChat)">
+    <mat-icon> clear_all</mat-icon>
+    <span> Clear Messages </span>
+  </button>
+</mat-menu>

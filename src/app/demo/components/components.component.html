@@ -1,0 +1,76 @@
+<div class="components" furyPage fxFlex fxLayout="row">
+  <div class="navigation" [fxFlex]="menuWidth" fxLayout="column" fxHide fxShow.gt-sm>
+    <mat-list fxFlex="grow" furyScrollbar class="sticky-list">
+      <h3 matSubheader>Components</h3>
+      <mat-list-item (click)="scrollTo('autocomplete')" matRipple>
+        <h4 matLine>Autocomplete</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('buttons')" matRipple>
+        <h4 matLine>Buttons</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('cards')" matRipple>
+        <h4 matLine>Cards</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('checkbox')" matRipple>
+        <h4 matLine>Checkbox</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('dialogs')" matRipple>
+        <h4 matLine>Dialog</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('gridList')" matRipple>
+        <h4 matLine>Grid List</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('input')" matRipple>
+        <h4 matLine>Input</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('lists')" matRipple>
+        <h4 matLine>List</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('menu')" matRipple>
+        <h4 matLine>Menu</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('progress')" matRipple>
+        <h4 matLine>Progress</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('progressSpinner')" matRipple>
+        <h4 matLine>Progress Spinner</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('radio')" matRipple>
+        <h4 matLine>Radio</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('slider')" matRipple>
+        <h4 matLine>Slider</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('slideToggle')" matRipple>
+        <h4 matLine>Slide Toggle</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('snackBar')" matRipple>
+        <h4 matLine>Snack Bar</h4>
+      </mat-list-item>
+      <mat-list-item (click)="scrollTo('tooltip')" matRipple>
+        <h4 matLine>Tooltip</h4>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div furyScrollbar #contentScroll [fxFlex]="contentWidth">
+    <div class="content" fxLayout="column" fxLayoutGap="24px">
+      <fury-autocomplete></fury-autocomplete>
+      <fury-buttons></fury-buttons>
+      <fury-cards></fury-cards>
+      <fury-checkbox></fury-checkbox>
+      <fury-dialogs></fury-dialogs>
+      <fury-grid-list></fury-grid-list>
+      <fury-input></fury-input>
+      <fury-lists></fury-lists>
+      <fury-menu></fury-menu>
+      <fury-progress></fury-progress>
+      <fury-progress-spinner></fury-progress-spinner>
+      <fury-radio></fury-radio>
+      <fury-slider></fury-slider>
+      <fury-slide-toggle></fury-slide-toggle>
+      <fury-snack-bar></fury-snack-bar>
+      <fury-tooltip></fury-tooltip>
+    </div>
+  </div>
+</div>

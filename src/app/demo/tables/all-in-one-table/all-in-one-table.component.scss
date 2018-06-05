@@ -1,0 +1,16 @@
+@import "var";
+
+.list-table {
+  @include mat-elevation($card-elevation);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.image-cell {
+
+  img {
+    background: $theme-app-bar;
+  }
+}

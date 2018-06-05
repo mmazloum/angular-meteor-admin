@@ -1,0 +1,93 @@
+<div class="register"
+     fxLayout="row"
+     fxLayoutAlign="center center">
+    <div class="session-card">
+        <div class="header"
+             fxLayout="column"
+             fxLayoutAlign="center center">
+            <img src="assets/img/icon.png">
+        </div>
+        <div class="content"
+             fxLayout="column"
+             fxLayoutGap="24px"
+             [formGroup]="form">
+            <div fxFlex="grow"
+                 fxLayout="column"
+                 fxLayoutGap="8px">
+                <mat-form-field fxFlex="grow">
+                    <mat-placeholder>Name</mat-placeholder>
+                    <input matInput
+                           required
+                           formControlName="name">
+                </mat-form-field>
+                <mat-form-field fxFlex="grow">
+                    <mat-placeholder>E-Mail</mat-placeholder>
+                    <input matInput
+                           required
+                           formControlName="email">
+                </mat-form-field>
+                <mat-form-field fxFlex="grow">
+                    <mat-placeholder>Password</mat-placeholder>
+                    <input matInput
+                           [type]="inputType"
+                           formControlName="password">
+                    <button *ngIf="!visible"
+                            type="button"
+                            mat-icon-button
+                            matSuffix
+                            (click)="show()">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button *ngIf="visible"
+                            type="button"
+                            mat-icon-button
+                            matSuffix
+                            (click)="hide()">
+                        <mat-icon>visibility_off</mat-icon>
+                    </button>
+                    <mat-hint>Try clicking the eye to toggle the visibility.</mat-hint>
+                </mat-form-field>
+                <mat-form-field fxFlex="grow">
+                    <mat-placeholder>Password (Confirm)</mat-placeholder>
+                    <input matInput
+                           [type]="inputType"
+                           formControlName="passwordConfirm">
+                    <button *ngIf="!visible"
+                            type="button"
+                            mat-icon-button
+                            matSuffix
+                            (click)="show()">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button *ngIf="visible"
+                            type="button"
+                            mat-icon-button
+                            matSuffix
+                            (click)="hide()">
+                        <mat-icon>visibility_off</mat-icon>
+                    </button>
+                    <mat-hint>Type in your password again.</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="extra-options"
+                 fxLayout="row"
+                 fxLayoutAlign="center center">
+                <mat-checkbox class="remember-me">I accept the <a href="#">terms and conditions.</a></mat-checkbox>
+            </div>
+
+            <button type="button"
+                    color="primary"
+                    mat-raised-button
+                    [disabled]="form.invalid"
+                    (click)="send()">
+                CREATE ACCOUNT
+            </button>
+
+            <p class="extra">
+                Already have an account?<br/>
+                <a [routerLink]="['/login']">Sign in here</a>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,261 @@
+<div class="form-wizard" furyPage furyScrollbar fxFlex="grow" fxLayout="column" fxLayoutAlign="start center">
+
+  <div class="card">
+    <mat-horizontal-stepper #stepper="matHorizontalStepper" [linear]="true">
+      <mat-step [stepControl]="accountFormGroup">
+        <form [formGroup]="accountFormGroup">
+          <ng-template matStepLabel>Create Account</ng-template>
+
+          <div class="heading">Create Account</div>
+          <div class="subheading">Set up your account for testing purposes.</div>
+
+          <div class="content" fxLayout="column" fxLayoutGap="8px">
+            <mat-form-field>
+              <mat-placeholder>Account Username</mat-placeholder>
+              <input matInput formControlName="username" required>
+              <mat-hint>This will be your unique login name.</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="grow">
+              <mat-placeholder>Name</mat-placeholder>
+              <input matInput formControlName="name" required>
+              <mat-hint>How may we call you?</mat-hint>
+            </mat-form-field>
+
+            <div fxLayout="column" fxLayoutGap="8px" fxLayout.gt-xs="row" fxLayoutGap.gt-xs="24px">
+              <mat-form-field fxFlex="grow">
+                <mat-placeholder>E-Mail</mat-placeholder>
+                <input matInput formControlName="email" required>
+                <mat-hint align="end">example@example.com</mat-hint>
+              </mat-form-field>
+
+              <div fxLayout="row" fxLayoutGap="8px">
+                <mat-form-field class="phone-select">
+                  <mat-placeholder>Code</mat-placeholder>
+                  <mat-select formControlName="phonePrefix">
+                    <mat-option *ngFor="let option of phonePrefixOptions" [value]="option">{{ option }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="grow">
+                  <mat-placeholder>Phone Number</mat-placeholder>
+                  <input matInput formControlName="phone">
+                  <mat-hint align="end"></mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+            <button mat-button type="button" (click)="stepper.reset()" [disabled]="accountFormGroup.pristine"
+                    color="primary">RESET
+            </button>
+            <button mat-raised-button matStepperNext color="primary" [disabled]="accountFormGroup.invalid">NEXT</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="passwordFormGroup">
+        <form [formGroup]="passwordFormGroup">
+          <ng-template matStepLabel>Select a Password</ng-template>
+
+          <div class="heading">Select a Password</div>
+          <div class="subheading">Enter your password you will use to log in.</div>
+
+          <div class="content" fxLayout="column" fxLayoutGap="8px">
+            <mat-form-field>
+              <mat-placeholder>Password</mat-placeholder>
+              <input matInput [type]="passwordInputType" formControlName="password" required>
+              <button *ngIf="passwordInputType === 'password'" type="button" mat-icon-button matSuffix
+                      (click)="showPassword()">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button *ngIf="passwordInputType === 'text'" type="button" mat-icon-button matSuffix
+                      (click)="hidePassword()">
+                <mat-icon>visibility_off</mat-icon>
+              </button>
+              <mat-hint>Your password should be atleast 6 characters long.</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-placeholder>Confirm Password</mat-placeholder>
+              <input matInput [type]="passwordInputType" formControlName="passwordConfirm" required>
+              <button *ngIf="passwordInputType === 'password'" type="button" mat-icon-button matSuffix
+                      (click)="showPassword()">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button *ngIf="passwordInputType === 'text'" type="button" mat-icon-button matSuffix
+                      (click)="hidePassword()">
+                <mat-icon>visibility_off</mat-icon>
+              </button>
+              <mat-hint>Please type in your password again.</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+            <button mat-button type="button" matStepperPrevious color="primary">PREVIOUS</button>
+            <button mat-raised-button matStepperNext color="primary" [disabled]="passwordFormGroup.invalid">NEXT
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="confirmFormGroup">
+        <form [formGroup]="confirmFormGroup">
+          <ng-template matStepLabel>Confirm Creation</ng-template>
+
+          <div class="heading">You're almost there!</div>
+          <div class="subheading">To finish registration, accept our terms of service and click on "Create Account".
+          </div>
+
+          <div class="content" fxLayout="column" fxLayoutGap="8px">
+            <mat-checkbox class="checkbox" formControlName="terms">
+              I agree to the terms of service and the usual stuff. *
+            </mat-checkbox>
+          </div>
+
+          <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+            <button mat-button type="button" matStepperPrevious color="primary">PREVIOUS</button>
+            <button mat-raised-button matStepperNext color="primary" (click)="submit()"
+                    [disabled]="confirmFormGroup.invalid">
+              CREATE ACCOUNT
+            </button>
+          </div>
+        </form>
+
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+
+  <div class="card">
+    <mat-vertical-stepper #verticalStepper="matVerticalStepper" [linear]="true">
+      <mat-step [stepControl]="verticalAccountFormGroup">
+        <form [formGroup]="verticalAccountFormGroup">
+          <ng-template matStepLabel>Create Account</ng-template>
+
+          <div class="heading">Create Account</div>
+          <div class="subheading">Set up your account for testing purposes.</div>
+
+          <div class="content" fxLayout="column" fxLayoutGap="8px">
+            <mat-form-field>
+              <mat-placeholder>Account Username</mat-placeholder>
+              <input matInput formControlName="username" required>
+              <mat-hint>This will be your unique login name.</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="grow">
+              <mat-placeholder>Name</mat-placeholder>
+              <input matInput formControlName="name" required>
+              <mat-hint>How may we call you?</mat-hint>
+            </mat-form-field>
+
+            <div fxLayout="column" fxLayoutGap="8px" fxLayout.gt-xs="row" fxLayoutGap.gt-xs="24px">
+              <mat-form-field fxFlex="grow">
+                <mat-placeholder>E-Mail</mat-placeholder>
+                <input matInput formControlName="email" required>
+                <mat-hint align="end">example@example.com</mat-hint>
+              </mat-form-field>
+
+              <div fxLayout="row" fxLayoutGap="8px">
+                <mat-form-field class="phone-select">
+                  <mat-placeholder>Code</mat-placeholder>
+                  <mat-select formControlName="phonePrefix">
+                    <mat-option *ngFor="let option of phonePrefixOptions" [value]="option">{{ option }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="grow">
+                  <mat-placeholder>Phone Number</mat-placeholder>
+                  <input matInput formControlName="phone">
+                  <mat-hint align="end"></mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+            <button mat-button type="button" (click)="verticalStepper.reset()"
+                    [disabled]="verticalAccountFormGroup.pristine"
+                    color="primary">RESET
+            </button>
+            <button mat-raised-button matStepperNext color="primary" [disabled]="verticalAccountFormGroup.invalid">
+              NEXT
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="verticalPasswordFormGroup">
+        <form [formGroup]="verticalPasswordFormGroup">
+          <ng-template matStepLabel>Select a Password</ng-template>
+
+          <div class="heading">Select a Password</div>
+          <div class="subheading">Enter your password you will use to log in.</div>
+
+          <div class="content" fxLayout="column" fxLayoutGap="8px">
+            <mat-form-field>
+              <mat-placeholder>Password</mat-placeholder>
+              <input matInput [type]="passwordInputType" formControlName="password" required>
+              <button *ngIf="passwordInputType === 'password'" type="button" mat-icon-button matSuffix
+                      (click)="showPassword()">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button *ngIf="passwordInputType === 'text'" type="button" mat-icon-button matSuffix
+                      (click)="hidePassword()">
+                <mat-icon>visibility_off</mat-icon>
+              </button>
+              <mat-hint>Your password should be atleast 6 characters long.</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-placeholder>Confirm Password</mat-placeholder>
+              <input matInput [type]="passwordInputType" formControlName="passwordConfirm" required>
+              <button *ngIf="passwordInputType === 'password'" type="button" mat-icon-button matSuffix
+                      (click)="showPassword()">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button *ngIf="passwordInputType === 'text'" type="button" mat-icon-button matSuffix
+                      (click)="hidePassword()">
+                <mat-icon>visibility_off</mat-icon>
+              </button>
+              <mat-hint>Please type in your password again.</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+            <button mat-button type="button" matStepperPrevious color="primary">PREVIOUS</button>
+            <button mat-raised-button matStepperNext color="primary" [disabled]="verticalPasswordFormGroup.invalid">NEXT
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="verticalConfirmFormGroup">
+        <form [formGroup]="verticalConfirmFormGroup">
+          <ng-template matStepLabel>Confirm Creation</ng-template>
+
+          <div class="heading">You're almost there!</div>
+          <div class="subheading">To finish registration, accept our terms of service and click on "Create Account".
+          </div>
+
+          <div class="content" fxLayout="column" fxLayoutGap="8px">
+            <mat-checkbox class="checkbox" formControlName="terms">
+              I agree to the terms of service and the usual stuff. *
+            </mat-checkbox>
+          </div>
+
+          <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+            <button mat-button type="button" matStepperPrevious color="primary">PREVIOUS</button>
+            <button mat-raised-button matStepperNext color="primary" (click)="submit()"
+                    [disabled]="verticalConfirmFormGroup.invalid">
+              CREATE ACCOUNT
+            </button>
+          </div>
+        </form>
+
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
+</div>
+
+<a mat-button
+   href="https://jasonzigrino.deviantart.com/art/Google-I-O-Night-Plane-Wallpaper-Material-Design-463878982"
+   class="copyright" target="_blank">LINK TO IMAGE</a>
